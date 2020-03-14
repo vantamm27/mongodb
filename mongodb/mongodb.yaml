@@ -1,0 +1,64 @@
+version: '3'
+services:
+  mongodb-1:
+    image: mongo:4.2.3
+    restart: always
+    ports:
+      - 27017:27017
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+#      MONGO_INITDB_DATABASE: collection
+    volumes:
+      - ./mongodb1/mongod.conf:/etc/mongo/mongod.conf
+      - ./mongodb1/data/mongodb:/var/lib/mongodb
+      - ./mongodb1/home/:/home/mongodb/
+    command:
+#        - '--auth'
+        - '-f'
+        - '/etc/mongo/mongod.conf'
+    networks:
+      vcs_net:
+        ipv4_address: 172.24.2.1
+
+  mongodb-2:
+    image: mongo:4.2.3
+    restart: always
+    ports:
+      - 27018:27017
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+#      MONGO_INITDB_DATABASE: collection
+    volumes:
+      - ./mongodb2/mongod.conf:/etc/mongo/mongod.conf
+      - ./mongodb2/data/mongodb:/var/lib/mongodb
+      - ./mongodb2/home/:/home/mongodb/
+    command:
+#        - '--auth'
+        - '-f'
+        - '/etc/mongo/mongod.conf'
+    networks:
+      vcs_net:
+        ipv4_address: 172.24.2.2
+
+  mongodb-3:
+    image: mongo:4.2.3
+    restart: always
+    ports:
+      - 27019:27017
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+#      MONGO_INITDB_DATABASE: collection
+    volumes:
+      - ./mongodb3/mongod.conf:/etc/mongo/mongod.conf
+      - ./mongodb3/data/mongodb:/var/lib/mongodb
+      - ./mongodb3/home/:/home/mongodb/
+    command:
+#        - '--auth'
+        - '-f'
+        - '/etc/mongo/mongod.conf'
+    networks:
+      vcs_net:
+        ipv4_address: 172.24.2.3

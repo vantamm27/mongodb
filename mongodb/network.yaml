@@ -1,0 +1,7 @@
+version: '3'
+networks:
+  vcs_net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.24.0.0/16
